@@ -4,7 +4,7 @@ export interface ICSSStyle extends React.CSSProperties {
     hover?: React.CSSProperties;
     active?: React.CSSProperties;
 }
-export interface CSSStyleMapInterface {
+export interface ICSSStyleMap {
     [prop: string]: ICSSStyle;
 }
 
@@ -22,7 +22,7 @@ export interface IStyleRule {
 export interface ThemeInterface {
     type: 'light' | 'dark';
     setType: (type: 'light' | 'dark') => void;
-    create: (data: CSSStyleMapInterface) => void | any;
+    create: (data: ICSSStyleMap) => void | any;
 }
 
 export const ThemeContext = createContext<ThemeInterface>({
@@ -61,7 +61,7 @@ export const themeContextData = (): ThemeInterface => {
         }
     }, [classNumber]);
 
-    const create = (data: CSSStyleMapInterface): any => {
+    const create = (data: ICSSStyleMap): any => {
         useEffect(() => {
             const classes: any = {};
             let number = classNumber;
